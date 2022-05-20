@@ -1,71 +1,64 @@
-create database it_marketplace;
+CREATE DATABASE testgoitdb;
 
-create table customers (
-id int not null auto_increment,
-customer_name varchar(50) not null,
-companies_country varchar(100) not null,
-primary key(id)
-);
+CREATE TABLE testgoitdb.developers (
+	id bigint AUTO_INCREMENT,
+    name varchar(20) NOT NULL,
+    surname varchar(20) NOT NULL,
+    age bigint CHECK (age>0),
+    sex varchar(10),
+    PRIMARY KEY(id)
+    );
+    
+CREATE TABLE testGoITDB.skills (
+	id bigint AUTO_INCREMENT,
+    industry varchar(20),
+    degree varchar(20) DEFAULT 'Junior',
+    PRIMARY KEY(id)
+    );
 
-create table companies(
-id int not null auto_increment,
-company_name varchar(150) not null,
-company_country varchar(150) not null,
-primary key(id)
-);
+CREATE TABLE testgoitdb.projects (
+	id bigint AUTO_INCREMENT,
+    name varchar(50) UNIQUE,
+    budget bigint NOT NULL, 
+    release_date date,
+    PRIMARY KEY(id)
+    );
+    
+CREATE TABLE testgoitdb.companies (
+	id bigint AUTO_INCREMENT,
+    name varchar(50) NOT NULL,
+    country varchar(20),
+    city varchar(20),
+    PRIMARY KEY(id)
+    );
+    
+CREATE TABLE testgoitdb.customers (
+	id bigint AUTO_INCREMENT,
+    name varchar(20),
+    surname varchar(20),
+    PRIMARY KEY(id)
+    );
 
-create table projects(
-id int not null auto_increment,
-project_name varchar(200) not null,
-project_description varchar(200),
-primary key(id)
-);
-
-create table skills(
-id int not null auto_increment,
-skill_name varchar(50) not null,
-skill_level varchar(50) not null,
-primary key(id)
-);
-
-create table developers(
-id int not null auto_increment,
-first_name varchar(100) not null,
-last_name varchar(100) not null,
-primary key(id)
-);
-
-create table developers_market_info(
-dev_id int not null,
-skill_id int not null,
-project_id int,
-company_id int
-);
-
-ALTER TABLE `it_marketplace`.`developers_market_info` 
-ADD INDEX `dev_id_idx` (`dev_id` ASC) VISIBLE,
-ADD INDEX `skill_id_idx` (`skill_id` ASC) VISIBLE,
-ADD INDEX `project_id_idx` (`project_id` ASC) VISIBLE,
-ADD INDEX `company_id_idx` (`company_id` ASC) VISIBLE;
-;
-ALTER TABLE `it_marketplace`.`developers_market_info` 
-ADD CONSTRAINT `dev_id`
-  FOREIGN KEY (`dev_id`)
-  REFERENCES `it_marketplace`.`developers` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION,
-ADD CONSTRAINT `skill_id`
-  FOREIGN KEY (`skill_id`)
-  REFERENCES `it_marketplace`.`skills` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION,
-ADD CONSTRAINT `project_id`
-  FOREIGN KEY (`project_id`)
-  REFERENCES `it_marketplace`.`projects` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION,
-ADD CONSTRAINT `company_id`
-  FOREIGN KEY (`company_id`)
-  REFERENCES `it_marketplace`.`companies` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+CREATE TABLE testgoitdb.developers_projects (
+	developers_id bigint,
+    projects_id bigint,
+    FOREIGN KEY (projects_id) REFERENCES testgoitdb.projects(id),
+    FOREIGN KEY (developers_id) REFERENCES testgoitdb.developers(id)
+    );
+    
+CREATE TABLE testgoitdb.developers_skills (
+	developers_id bigint,
+    skills_id bigint,
+    FOREIGN KEY (skills_id) REFERENCES testgoitdb.skills(id),
+    FOREIGN KEY (developers_id) REFERENCES testgoitdb.developers(id)
+    );
+    
+ALTER TABLE testgoitdb.projects
+	ADD COLUMN companies_id bigint NOT NULL,
+    ADD COLUMN customers_id bigint NOT NULL,
+    ADD FOREIGN KEY (customers_id) REFERENCES testgoitdb.customers(id),
+    ADD FOREIGN KEY (companies_id) REFERENCES testgoitdb.companies(id);
+    
+ALTER TABLE testgoitdb.developers
+	ADD COLUMN companies_id bigint,
+    ADD FOREIGN KEY (companies_id) REFERENCES testgoitdb.companies(id);
