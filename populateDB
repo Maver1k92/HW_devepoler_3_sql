@@ -1,54 +1,56 @@
-INSERT INTO `it_marketplace`.`companies` (`company_name`, `company_country`) VALUES ('GoIT', 'Ukraine');
-INSERT INTO `it_marketplace`.`companies` (`company_name`, `company_country`) VALUES ('EPAM', 'USA');
-INSERT INTO `it_marketplace`.`companies` (`company_name`, `company_country`) VALUES ('Luxoft', 'Ukraine');
-INSERT INTO `it_marketplace`.`companies` (`company_name`, `company_country`) VALUES ('Sovtsorve', 'Ukraine');
+INSERT INTO testgoitdb.companies (name,country,city)
+	VALUES
+	('ABN inc', 'Makedonia', 'Tringo'),
+	('FIFA corp', 'Italy', 'Rome'),
+	('Spring4beavers', 'Holland', 'Amsterdam');
 
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('CocaCola', 'USA');
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('Mersedes', 'Germany');
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('Renault', 'France');
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('Booking', 'USA');
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('Tripodvisor', 'Ireland');
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('Diya', 'Ukraine');
-INSERT INTO `it_marketplace`.`customers` (`customer_name`, `companies_country`) VALUES ('Monobank', 'Ukraine');
+INSERT INTO testgoitdb.customers (name, surname)
+	VALUES
+	('John', 'Makedon'),
+	('Bob', 'Fridgh'),
+	('Ivan', 'Petrenko');
 
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Oleksii', 'Omeliashko');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Maria', 'Chala');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Denis', 'Pypkin');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Ivan', 'Hytryi');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Nata', 'Bosetska');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Anton', 'Mordatui');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('George', 'Bystryi');
-INSERT INTO `it_marketplace`.`developers` (`first_name`, `last_name`) VALUES ('Sergiy', 'Salypa');
+INSERT INTO testgoitdb.skills (industry, degree)
+	VALUES
+	('Java', 'Middle'),
+    ('JS', 'Middle'),
+    ('C++', 'Senior'),
+    ('C++', 'Middle');
+    
+INSERT INTO testgoitdb.skills (industry)
+	VALUES
+	('Java'),
+    ('JS');
+    
+INSERT INTO testgoitdb.projects 
+	VALUES
+    (1, 'Loombook', 123000, '2022-12-22', 1,2),
+    (2, 'IDEA Workspace', 2340000500, null, 2,2),
+    (3, 'Git workbench', 450100500, null, 1,3);
+    
+INSERT INTO testgoitdb.developers
+	VAlUES
+    (1, 'Nenci', 'Ibragimovich', 31, 'female', 2),
+    (2, 'Victor', 'Ronaldo', 29, 'male', null),
+    (3, 'Imanuel', 'Mikron', 22, 'other', 1);
+    
+INSERT INTO testgoitdb.developers_skills
+	VALUES
+    (2,3),
+    (1,3),
+    (1,6),
+    (1,2),
+    (2,2),
+    (3,1);
+    
+    
+INSERT INTO testgoitdb.developers_projects
+	VALUES 
+    (1, 2),
+    (2, 2),
+    (3, 1),
+    (3, 2),
+    (1, 1),
+	(1, 3);
 
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('Mobile APP', 'to Coke company');
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('UI to media system', 'Daimler company');
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('Mobile APP Android', 'Monobank');
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('Security system', 'Renault company');
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('API service', 'Booking services');
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('API service to trypidvisor', 'Tripodvisor service');
-INSERT INTO `it_marketplace`.`projects` (`project_name`, `project_description`) VALUES ('Mobile IOS APP', 'Diya app');
 
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('Java', 'Junior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('Java', 'Middle');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('Java', 'Senior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('C++', 'Junior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('C++', 'Middle');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('C++', 'Senior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('C#', 'Junior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('C#', 'Middle');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('C#', 'Senior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('JS', 'Junior');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('JS', 'Middle');
-INSERT INTO `it_marketplace`.`skills` (`skill_name`, `skill_level`) VALUES ('JS', 'Senior');
-
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('1', '1', '7', '1');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('2', '3', '6', '2');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('3', '5', '5', '3');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('4', '6', '4', '4');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('5', '7', '3', '4');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('6', '8', '2', '4');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('7', '9', '1', '3');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('8', '12', '7', '2');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('1', '12', '7', '2');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('1', '5', '5', '3');
-INSERT INTO `it_marketplace`.`developers_market_info` (`dev_id`, `skill_id`, `project_id`, `company_id`) VALUES ('2', '6', '5', '4');
